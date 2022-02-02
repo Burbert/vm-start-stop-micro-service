@@ -1,0 +1,11 @@
+{
+  "bindings": [
+    {
+      "name": "QueueItem",
+      "type": "queueTrigger",
+      "direction": "in",
+      "queueName": "start",
+      "connection": "QUEUE_CONNECTION_STRING"
+    }
+  ]
+}
