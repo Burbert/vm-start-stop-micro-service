@@ -31,6 +31,14 @@ $master_key = Invoke-AzRestMethod -path "/subscriptions/$($context.Subscription.
 
 Update-AzFunctionAppSetting -Name $function_app_name -ResourceGroupName $resource_group_name -AppSetting @{"ACCESS_KEY" = $master_key}
 
+# deploy to function app
+Set-Location -Path .\start-stop\
+
+# make sure you have the azure function core tools installed
+# install with scoop
+# scoop install azure-functions-core-tools
+# you also need to be logged in with azure cli
+func azure functionapp publish $function_app_name
 
 # delete resource group
 Remove-AzResourceGroup -Name $resource_group_name -Location $location -Force
