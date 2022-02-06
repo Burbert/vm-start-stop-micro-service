@@ -35,6 +35,10 @@ $master_key = Invoke-AzRestMethod -path "/subscriptions/$($context.Subscription.
 
 Update-AzFunctionAppSetting -Name $function_app_name -ResourceGroupName $resource_group_name -AppSetting @{"ACCESS_KEY" = $master_key}
 
+$msi = Update-AzFunctionApp -Name $function_app_name -ResourceGroupName $resource_group_name -IdentityType SystemAssigned -Force
+
+New-AzRoleAssignment -ObjectId $msi.IdentityPrincipalId -RoleDefinitionName 'Virtual Machine Contributor' -Scope "/subscriptions/$($context.Subscription.id)"
+
 # deploy to function app
 Set-Location -Path .\start-stop\
 
