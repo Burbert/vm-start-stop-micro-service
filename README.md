@@ -1,5 +1,9 @@
 # VM Start Stop Micro Service
+This is a micro service to start and stop VMs on Azure.
 
+You can read more about it in my blog post [here](https://www.itinsights.org/vm-start-stop-micro-service/).
+
+# Deployment
 ```powershell
 # variables
 $resource_group_name = 'start-stop-vms'
